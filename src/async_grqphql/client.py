@@ -1,4 +1,4 @@
-import urllib.request
+from six.moves import urllib
 import json
 import asyncio
 
