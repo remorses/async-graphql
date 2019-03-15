@@ -7,9 +7,9 @@ class Client:
         self.endpoint = endpoint
         self.token = None
         self.headername = None
-        self.loop = loop or asyncio.get_event_loop()
+        self.loop = loop # or asyncio.get_event_loop()
 
-    async def execute(self, query, variables=None):
+    def execute(self, query, variables=None):
         return self.loop.run_in_executor(None, lambda: self._send(query, variables))
 
     def inject_token(self, token, headername='Authorization'):
@@ -29,7 +29,7 @@ class Client:
 
         try:
             response = urllib.request.urlopen(req)
-            return response.read().decode('utf-8')
+            return json.loads(response.read().decode('utf-8'))
         except urllib.error.HTTPError as e:
             # print((e.read()))
             # print('')

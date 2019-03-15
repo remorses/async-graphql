@@ -4,22 +4,26 @@ import asyncio
 
 
 
-client = Client('http://clusterimages.fun:4466')
 
 
 
-async def main():
+async def main(loop):
+    client = Client('http://clusterimages.fun:4466', loop=loop)
+
     query = """
-        bots {
-            instagram {
-                username
+        query {
+            bots {
+                instagram {
+                    username
+                }
             }
         }
     """
-    resp = await client.execute(query)
+    resp = await client.execute(query,)
 
     print(resp.get('data') or f'error {json.dumps(resp)}')
 
 
-
-asyncio.run(main())
+loop=asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+loop.run_until_complete(main(loop))
