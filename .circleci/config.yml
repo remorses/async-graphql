@@ -15,7 +15,9 @@ jobs:
 
             - run:
                     name: install dependencies
-                    command: pip install --user ./src
+                    command: |
+                        pip install --user ./src
+                        pip install --user twine
 
             - run:
                 name: run tests
