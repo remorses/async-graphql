@@ -21,6 +21,9 @@ open("VERISON", "w").write(new)
 
 version=`cat VERSION`
 
+git config --global user.email "beats.by.morse@gamil.com"
+git config --global user.name "Tommaso De Rosso"
+
 git add VERSION
 git commit -m "version $version"
 git tag  "$version"
