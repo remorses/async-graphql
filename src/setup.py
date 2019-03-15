@@ -6,7 +6,7 @@ with open('README.md', 'r') as fh:
 with open('VERSION', 'r') as fh:
     version = fh.read()
 
-setup(name='async-graphql',
+setup(name='async_graphql',
       version=version,
       description='Async GraphQL client',
       long_description=long_description,
