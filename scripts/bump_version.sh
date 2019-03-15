@@ -6,11 +6,11 @@ git checkout master
 
 # bump version
 python -c '\
-version = open("VERISON", "r").read().strip()
+version = open("VERSION", "r").read().strip()
 new = version.split(".")[-1]
 new = int(new) + 1
 new = str(new)
-open("VERISON", "w").write(new)
+open("VERSION", "w").write(new)
 '
 
 # ssh-add -D
@@ -22,7 +22,7 @@ open("VERISON", "w").write(new)
 version=`cat VERSION`
 
 git config --global user.email "beats.by.morse@gamil.com"
-git config --global user.name "Tommaso De Rosso"
+git config --global user.name "Tommaso De Rossi"
 
 git add VERSION
 git commit -m "version $version"
