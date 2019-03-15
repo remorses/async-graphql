@@ -27,4 +27,4 @@ git config --global user.name "Tommaso De Rosso"
 git add VERSION
 git commit -m "version $version"
 git tag  "$version"
-git push  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/instagram-botnet.git --tags
+git push  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git --tags
