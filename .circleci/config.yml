@@ -15,7 +15,7 @@ jobs:
 
             - run:
                     name: install dependencies
-                    command: pip install -u ./src
+                    command: pip install --user ./src
 
             - run:
                 name: run tests
