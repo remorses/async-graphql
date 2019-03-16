@@ -43,3 +43,6 @@ workflows:
             - deploy:
                 requires:
                     - test
+                filters:
+                    tags:
+                        ignore: /.*/
