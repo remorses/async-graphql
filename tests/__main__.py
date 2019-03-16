@@ -1,27 +1,33 @@
 from async_graphql import Client
 import json
 import asyncio
+from six.moves import urllib
 
 
-
-
-
+URL = 'https://countries.trevorblades.com'
+# URL = 'http://clusterimages.fun:4466'
 
 async def main(loop):
-    client = Client('http://clusterimages.fun:4466', loop=loop)
+    try:
+        client = Client(URL, loop=loop)
 
-    query = """
-        query {
-            bots {
-                instagram {
-                    username
+        query = """
+            query {
+                countries {
+                    code
                 }
             }
-        }
-    """
-    resp = await client.execute(query,)
+        """
+        resp = await client.execute(query,)
 
-    print(resp.get('data') or f'error {json.dumps(resp)}')
+        print(json.dumps(resp, indent=4))
+
+    except urllib.error.HTTPError as e:
+        print(e)
+        print(e.msg)
+        print()
+        print(json.dumps(json.loads(e.read()),indent=4))
+
 
 
 loop=asyncio.new_event_loop()

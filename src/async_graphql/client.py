@@ -9,7 +9,7 @@ class Client:
         self.headername = None
         self.loop = loop # or asyncio.get_event_loop()
 
-    def execute(self, query, variables=None):
+    def execute(self, query, variables={}):
         return self.loop.run_in_executor(None, lambda: self._send(query, variables))
 
     def inject_token(self, token, headername='Authorization'):
