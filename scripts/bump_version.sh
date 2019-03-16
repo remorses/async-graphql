@@ -27,5 +27,5 @@ git config  user.name "circleci"
 
 git add VERSION
 git commit -m "version $version"
-git tag  -a "$version" -m "[skip ci]"
+git tag  "$version"
 git push  --tags  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git HEAD
