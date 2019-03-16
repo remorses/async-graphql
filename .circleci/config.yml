@@ -17,7 +17,7 @@ jobs:
                     name: install dependencies
                     command: |
                         pip install --user ./src
-                        pip install --user twine
+
 
             - run:
                 name: run tests
@@ -30,6 +30,7 @@ jobs:
                 - image: circleci/python:3.6.1
             steps:
                 - checkout
+                - run: pip install --user twine setuptools
                 - run: ./scripts/bump_version.sh
                 - run: ./scripts/deploy_pypi.sh
 

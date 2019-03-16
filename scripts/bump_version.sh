@@ -1,16 +1,17 @@
-set -x
+
 cd `dirname $0`
 cd ../src
 
 git checkout master
+git pull
 
 # bump version
 python -c '\
-version = open("VERISON", "r").read().strip()
+version = open("VERSION", "r").read().strip()
 new = version.split(".")[-1]
 new = int(new) + 1
-new = str(new)
-open("VERISON", "w").write(new)
+new = ".".join(version.split(".")[:-1]) + "." + str(new)
+open("VERSION", "w").write(new)
 '
 
 # ssh-add -D
@@ -21,10 +22,10 @@ open("VERISON", "w").write(new)
 
 version=`cat VERSION`
 
-git config --global user.email "beats.by.morse@gamil.com"
-git config --global user.name "Tommaso De Rosso"
+git config  user.email "beats.by.morse@gamil.com"
+git config  user.name "Tommaso De Rossi"
 
 git add VERSION
 git commit -m "version $version"
-git tag  "$version"
-git push  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git --tags
+git tag  -a "$version" -m "[skip ci]"
+git push  --tags  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git HEAD
