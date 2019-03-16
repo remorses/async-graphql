@@ -9,7 +9,7 @@ python -c '\
 version = open("VERSION", "r").read().strip()
 new = version.split(".")[-1]
 new = int(new) + 1
-new = '.'.join(version.split(".")[:-1]) + '.' + str(new)
+new = ".".join(version.split(".")[:-1]) + "." + str(new)
 open("VERSION", "w").write(new)
 '
 
@@ -26,5 +26,5 @@ git config  user.name "Tommaso De Rossi"
 
 git add VERSION
 git commit -m "version $version"
-git tag  -a "$version" -m "$version"
+git tag  -a "$version" -m "[skip ci]"
 git push  --tags  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git HEAD
