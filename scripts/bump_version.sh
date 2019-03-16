@@ -21,10 +21,10 @@ open("VERSION", "w").write(new)
 
 version=`cat VERSION`
 
-git config --global user.email "beats.by.morse@gamil.com"
-git config --global user.name "Tommaso De Rossi"
+git config  user.email "beats.by.morse@gamil.com"
+git config  user.name "Tommaso De Rossi"
 
 git add VERSION
 git commit -m "version $version"
-git tag  "$version"
-git push  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git --tags
+git tag  -a "$version" -m "$version"
+git push  --tags  https://${GITHUB_PERSONAL_TOKEN}@github.com/remorses/async-graphql.git HEAD
