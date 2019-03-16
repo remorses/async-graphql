@@ -3,6 +3,7 @@ cd `dirname $0`
 cd ../src
 
 git checkout master
+git pull
 
 # bump version
 python -c '\
