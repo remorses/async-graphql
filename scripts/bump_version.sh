@@ -22,8 +22,8 @@ open("VERSION", "w").write(new)
 
 version=`cat VERSION`
 
-git config  user.email "beats.by.morse@gamil.com"
-git config  user.name "Tommaso De Rossi"
+git config  user.email "circleci@circleci.com"
+git config  user.name "circleci"
 
 git add VERSION
 git commit -m "version $version"
