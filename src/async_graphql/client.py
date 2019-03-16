@@ -12,9 +12,6 @@ class Client:
     def execute(self, query, variables={}):
         return self.loop.run_in_executor(None, lambda: self._send(query, variables))
 
-    def inject_token(self, token, headername='Authorization'):
-        self.token = token
-        self.headername = headername
 
     def _send(self, query, variables):
         data = {'query': query,
