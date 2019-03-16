@@ -9,7 +9,7 @@ python -c '\
 version = open("VERSION", "r").read().strip()
 new = version.split(".")[-1]
 new = int(new) + 1
-new = version.split(".")[:-1].join('.') + '.' + str(new)
+new = '.'.join(version.split(".")[:-1]) + '.' + str(new)
 open("VERSION", "w").write(new)
 '
 
