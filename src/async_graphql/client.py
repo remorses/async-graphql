@@ -7,7 +7,7 @@ class Client:
         self.endpoint = endpoint
         self.token = None
         self.headername = None
-        self.loop = loop # or asyncio.get_event_loop()
+        self.loop = loop or asyncio.get_event_loop()
 
     def execute(self, query, variables=None):
         return self.loop.run_in_executor(None, lambda: self._send(query, variables))
