@@ -30,7 +30,7 @@ jobs:
                 - image: circleci/python:3.6.1
             steps:
                 - checkout
-                - run: pip install --user twine setuptools
+                - run: pip install --user -U twine setuptools wheel
                 - run: ./scripts/bump_version.sh
                 - run: ./scripts/deploy_pypi.sh
 

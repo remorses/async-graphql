@@ -1,12 +1,13 @@
 from setuptools import setup
 
-with open('README.md', 'r') as fh:
-    long_description = fh.read()
+with open('README.md', 'r') as f:
+    long_description = f.read()
 
-with open('VERSION', 'r') as fh:
-    version = fh.read()
+with open('VERSION', 'r') as f:
+    version = f.read()
 
-setup(name='async-graphql',
+setup(
+      name='async-graphql',
       version=version,
       description='Async GraphQL client',
       long_description=long_description,
@@ -20,4 +21,4 @@ setup(name='async-graphql',
           'six',
           'asyncio'
       ],
-      zip_safe=False)
+)

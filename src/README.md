@@ -1,6 +1,9 @@
 
+[![CircleCI](https://circleci.com/gh/remorses/async-graphql/tree/master.svg?style=svg)](https://circleci.com/gh/remorses/async-graphql/tree/master)
 
-Make graphql requests asynchronously, python 2.7 and more required
+
+Make graphql requests asynchronously, python 2.7 and more required.
+Soon will come graphql subscriptions.
 
 
 The library is tiny, memory usage loading the module is also is good:
