@@ -28,8 +28,8 @@ class Client:
 
         try:
             response = urllib.request.urlopen(req)
-            res =  json.loads(response.read().decode('utf-8'))
-            errors = res.get('errors',) or []
+            data =  json.loads(response.read().decode('utf-8'))
+            errors = data.get('errors',) or []
             if len(errors):
                 url = response.url
                 code = response.code
@@ -37,6 +37,8 @@ class Client:
                 msg = errors[0].get('message', '')
                 fp = io.StringIO(json.dumps({'errors': errors}))
                 raise HTTPError(url, code, msg, headers, fp)
+            else:
+                return data
         except urllib.error.HTTPError as e:
             # print((e.read()))
             # print('')
