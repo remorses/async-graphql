@@ -5,16 +5,16 @@ from six.moves import urllib
 
 
 URL = 'https://countries.trevorblades.com'
-# URL = 'http://clusterimages.fun:4466'
+# URL = 'http://clusterimages.fun:4466'
 
 async def main(loop):
     try:
         client = Client(URL, loop=loop)
 
         query = """
-            query {
-                countries {
-                    code
+            mutation {
+                updateManyInstagramJob(where: { completed: true }) {
+                    name
                 }
             }
         """
@@ -26,7 +26,7 @@ async def main(loop):
         print(e)
         print(e.msg)
         print()
-        print(json.dumps(json.loads(e.read()),indent=4))
+        print(json.dumps(json.load(e),indent=4))
 
 
 

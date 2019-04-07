@@ -1,5 +1,7 @@
-import six.moves.urllib
+from six.moves import urllib
+# import urllib
 
+# urllib.response.addinfo
 
-HTTPError = six.moves.urllib.error.HTTPError
-URLError = six.moves.urllib.error.URLError
+HTTPError = urllib.error.HTTPError
+URLError = urllib.error.URLError

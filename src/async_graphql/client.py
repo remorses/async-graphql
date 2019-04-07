@@ -1,6 +1,8 @@
 from six.moves import urllib
 import json
+import io
 import asyncio
+from .errors import HTTPError
 
 class Client:
     def __init__(self, endpoint, loop=None):
@@ -26,7 +28,15 @@ class Client:
 
         try:
             response = urllib.request.urlopen(req)
-            return json.loads(response.read().decode('utf-8'))
+            res =  json.loads(response.read().decode('utf-8'))
+            errors = res.get('errors',) or []
+            if len(errors):
+                url = response.url
+                code = response.code
+                headers = response.headers
+                msg = errors[0].get('message', '')
+                fp = io.StringIO(json.dumps({'errors': errors}))
+                raise HTTPError(url, code, msg, headers, fp)
         except urllib.error.HTTPError as e:
             # print((e.read()))
             # print('')
